@@ -1,0 +1,124 @@
+Task:1
+Super keyword in Java:
+The super keyword in Java is used to refer to the superclass of the current object. It is primarily used in two contexts:
+
+a. Accessing superclass members: You can use super to access methods or fields defined in the superclass. This is particularly useful when a subclass overrides a method from the superclass but still needs to call the overridden method.
+class Vehicle {
+    int speed = 50;
+    void displaySpeed() {
+        System.out.println("Speed: " + speed);
+    }
+}
+
+class Car extends Vehicle {
+    int speed = 100;
+    void displaySpeed() {
+        super.displaySpeed(); // Calling superclass method
+        System.out.println("Car Speed: " + speed);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.displaySpeed();
+    }
+}
+In this example, super.displaySpeed() calls the displaySpeed() method of the superclass Vehicle from the Car class.
+
+b. Invoking superclass constructors: You can also use super to invoke the constructor of the superclass. This is helpful when the subclass constructor needs to initialize the superclass part of the object.
+class Vehicle {
+    int speed;
+    Vehicle(int speed) {
+        this.speed = speed;
+    }
+}
+
+class Car extends Vehicle {
+    int doors;
+    Car(int speed, int doors) {
+        super(speed); // Invoking superclass constructor
+        this.doors = doors;
+    }
+}
+In this example, super(speed) calls the constructor of the superclass Vehicle, passing the speed parameter.
+
+This keyword in Java:
+The this keyword in Java is a reference to the current object. It is primarily used in two contexts:
+
+a. Accessing instance variables and methods: You can use this to refer to instance variables or methods of the current object.
+class Car {
+    int doors;
+    void setDoors(int doors) {
+        this.doors = doors; // Referring to the instance variable
+    }
+}
+In this example, this.doors refers to the instance variable doors of the Car class.
+
+b. Invoking current class constructors: You can also use this to call one constructor from another within the same class.
+class Car {
+    int doors;
+    Car() {
+        this(4); // Invoking another constructor of the same class
+    }
+    Car(int doors) {
+        this.doors = doors;
+    }
+}
+In this example, this(4) calls the constructor Car(int doors) from the default constructor of the Car class, passing 4 as the value for doors.
+
+In summary, super is used to refer to the superclass, while this is used to refer to the current object. super is mainly used to access superclass members and constructors, while this is used for accessing instance members and invoking constructors within the same class
+Task:2
+Exception Handling in Java:
+Try-Catch Blocks: Used to handle exceptions. Code that may throw an exception is enclosed in a try block, and the catch block catches and handles the exception.
+
+Checked Exceptions: These are exceptions that are checked at compile time. Methods that might throw checked exceptions must declare them in their method signature or handle them using try-catch blocks.
+Example of Try-Catch Blocks Handling Checked Exception:
+java
+Copy code
+public class Main {
+    public static void main(String[] args) {
+        try {
+            // Code that may throw IOException
+            FileReader file = new FileReader("example.txt");
+            // Read file contents
+            // ...
+        } catch (FileNotFoundException e) {
+            // Handling the FileNotFoundException
+            System.out.println("File not found: " + e.getMessage());
+        }
+    }
+}
+In this example, FileReader might throw a FileNotFoundException, so it's wrapped in a try block. If the exception occurs, it's caught in the catch block, where you can handle it appropriately.
+
+Program Demonstrating Interface and Implementing Multiple Interfaces:
+// Interface 1
+interface Interface1 {
+    void method1();
+}
+
+// Interface 2
+interface Interface2 {
+    void method2();
+}
+
+// Class implementing both interfaces
+class MyClass implements Interface1, Interface2 {
+    public void method1() {
+        System.out.println("Method 1 implementation");
+    }
+
+    public void method2() {
+        System.out.println("Method 2 implementation");
+    }
+}
+
+// Main class to test the implementation
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.method1();  // Output: Method 1 implementation
+        obj.method2();  // Output: Method 2 implementation
+    }
+}
+In this example, MyClass implements both Interface1 and Interface2, providing implementations for all methods declared in these interfaces. When creating an object of MyClass, you can call methods from both interfaces.
